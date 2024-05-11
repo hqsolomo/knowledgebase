@@ -4,7 +4,7 @@ Tools and guides for various Microsoft products
 
 ## Guides
 
-* Sharing inboxes and calendars across Microsoft 365 subscriptions: https://github.com/hqsolomo/knowledgebase/Microsoft/guides/m365-sharing.md  
+* Sharing inboxes and calendars across Microsoft 365 subscriptions: [https://github.com/hqsolomo/knowledgebase/Microsoft/guides/m365-sharing.md  ](https://github.com/hqsolomo/knowledgebase/blob/17ef69e80576582cacdb50ef59d68fec73fe3eb2/Microsoft/guides/m365-sharing.md)
 
 ## Further Reading
 
