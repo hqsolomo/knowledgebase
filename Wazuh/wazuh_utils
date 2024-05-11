@@ -1,0 +1,48 @@
+
+#!/bin/bash
+
+# Various utilities for Wazuh management. Uses the CLI
+OSSEC_BIN="/var/ossec/bin/"
+AGENT_UPGRADE="agent_upgrade"
+
+update_all_agents(){
+    sudo -k ${OSSEC_BIN}${AGENT_UPGRADE} -s
+}
+
+update_outdated_agents(){
+    sudo /var/ossec/bin/agent_upgrade -a "$(mapfile -t output < <(sudo /var/ossec/bin/agent_upgrade -l | tail -n+2 | head -n-2 | cut -d' ' -f1); printf "%s\n" "${output[*]}")"
+}
+
+agent_update_ops(){
+    case "$1" in
+        all)
+            update_all_agents
+            ;;
+        outdated)
+            update_outdated_agents
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+agent_ops(){
+    case "$1" in
+        update)
+            agent_update_ops "$2"
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+case "$1" in
+    agent)
+        agent_ops "$2" "$3"
+        ;;
+    *)
+        exit 1
+        ;;
+esac
